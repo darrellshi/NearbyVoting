@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A391498566B9D5C50F8DFBA6 /* Pods_NearbyVoting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B762DCB6CFBB91219D6A912 /* Pods_NearbyVoting.framework */; };
+		CD31F0881FE8097A00A4900E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31F0871FE8097A00A4900E /* MainViewController.swift */; };
 		CD810E331FE800E900237D3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD810E321FE800E900237D3C /* AppDelegate.swift */; };
-		CD810E351FE800E900237D3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD810E341FE800E900237D3C /* ViewController.swift */; };
 		CD810E381FE800E900237D3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E361FE800E900237D3C /* Main.storyboard */; };
 		CD810E3A1FE800E900237D3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD810E391FE800E900237D3C /* Assets.xcassets */; };
 		CD810E3D1FE800E900237D3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E3B1FE800E900237D3C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C7EBC3F10F699164082839A /* Pods-NearbyVoting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearbyVoting.release.xcconfig"; path = "Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting.release.xcconfig"; sourceTree = "<group>"; };
+		7B762DCB6CFBB91219D6A912 /* Pods_NearbyVoting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NearbyVoting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9B49E524F514C679F569C4A /* Pods-NearbyVoting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearbyVoting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting.debug.xcconfig"; sourceTree = "<group>"; };
+		CD31F0871FE8097A00A4900E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD810E2F1FE800E900237D3C /* NearbyVoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearbyVoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD810E321FE800E900237D3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD810E341FE800E900237D3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD810E371FE800E900237D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD810E391FE800E900237D3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD810E3C1FE800E900237D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A391498566B9D5C50F8DFBA6 /* Pods_NearbyVoting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E533903A1C4136B0C149471 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B762DCB6CFBB91219D6A912 /* Pods_NearbyVoting.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		216701B82970C83D84C24D54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9B49E524F514C679F569C4A /* Pods-NearbyVoting.debug.xcconfig */,
+				2C7EBC3F10F699164082839A /* Pods-NearbyVoting.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD810E261FE800E800237D3C = {
 			isa = PBXGroup;
 			children = (
 				CD810E311FE800E900237D3C /* NearbyVoting */,
 				CD810E301FE800E900237D3C /* Products */,
+				216701B82970C83D84C24D54 /* Pods */,
+				0E533903A1C4136B0C149471 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +78,30 @@
 		CD810E311FE800E900237D3C /* NearbyVoting */ = {
 			isa = PBXGroup;
 			children = (
+				CD810E451FE807D900237D3C /* Models */,
+				CD810E441FE807C400237D3C /* ViewControllers */,
 				CD810E321FE800E900237D3C /* AppDelegate.swift */,
-				CD810E341FE800E900237D3C /* ViewController.swift */,
 				CD810E361FE800E900237D3C /* Main.storyboard */,
 				CD810E391FE800E900237D3C /* Assets.xcassets */,
 				CD810E3B1FE800E900237D3C /* LaunchScreen.storyboard */,
 				CD810E3E1FE800E900237D3C /* Info.plist */,
 			);
 			path = NearbyVoting;
+			sourceTree = "<group>";
+		};
+		CD810E441FE807C400237D3C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD31F0871FE8097A00A4900E /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD810E451FE807D900237D3C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +111,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD810E411FE800E900237D3C /* Build configuration list for PBXNativeTarget "NearbyVoting" */;
 			buildPhases = (
+				BEC867088B627585818B2205 /* [CP] Check Pods Manifest.lock */,
 				CD810E2B1FE800E900237D3C /* Sources */,
 				CD810E2C1FE800E900237D3C /* Frameworks */,
 				CD810E2D1FE800E900237D3C /* Resources */,
+				415919E2656899D81BA4774A /* [CP] Embed Pods Frameworks */,
+				9265F7E90DA9927DEEFA8C9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,12 +174,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		415919E2656899D81BA4774A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9265F7E90DA9927DEEFA8C9E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting-resources.sh",
+				"${PODS_ROOT}/NearbyMessages/Resources/resources/GNSSharedResources.bundle",
+				"${PODS_ROOT}/NearbyMessages/Resources/resources/ic_expand_more.xcassets",
+				"${PODS_ROOT}/NearbyMessages/Resources/resources/ic_nearby_48pt.xcassets",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEC867088B627585818B2205 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NearbyVoting-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD810E2B1FE800E900237D3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD810E351FE800E900237D3C /* ViewController.swift in Sources */,
+				CD31F0881FE8097A00A4900E /* MainViewController.swift in Sources */,
 				CD810E331FE800E900237D3C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,31 +371,33 @@
 		};
 		CD810E421FE800E900237D3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9B49E524F514C679F569C4A /* Pods-NearbyVoting.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 99P2928454;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NearbyVoting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = darrellshi.NearbyVoting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CD810E431FE800E900237D3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C7EBC3F10F699164082839A /* Pods-NearbyVoting.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 99P2928454;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NearbyVoting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = darrellshi.NearbyVoting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
