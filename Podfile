@@ -3,5 +3,6 @@ target 'NearbyVoting' do
 
   # Pods for NearbyVoting
   pod 'NearbyMessages'
+  pod 'EVReflection'
 
 end
