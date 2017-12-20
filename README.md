@@ -1,0 +1,18 @@
+# NearbyVoting
+- [ ] As a vote creator, I would like to easily create a vote on main screen
+- [ ] As a vote creator, I would like to enter a question or title for my vote
+- [ ] As a vote creator, I would like to enter options for my vote
+- [ ] As a vote creator, I would like to show results of voting at then end
+- [ ] As a vote creator, I would like to see the names that voted on each option
+- [ ] As a vote creator, I would like to see live voting results (if time permits)
+- [ ] As a vote creator, I would like to create multiple votes all at once
+- [ ] As a vote creator, I would like my voting options to be images (if time permits)
+- [ ] As a vote creator, I would like to have the option to make my vote allow multiple responses (if time permits)
+- [ ] As a vote creator, I would like to be able to vote as well (if time permits)
+- [ ] As a vote creator, I would like to publish vote results to all voters (if time permits)
+- [ ] As a voter, I would like to see a session and enter when there is one open nearby
+- [ ] As a voter, I would like to either enter my name or by anonymous 
+- [ ] As a voter, I would like to see the question/title and options for the votes
+- [ ] As a voter, I would like to select options
+- [ ] As a voter, I would like to see a vote button
+- [ ] As a voter, I would like to select multiple options if it is enabled (if time permits)
