@@ -4,5 +4,7 @@ target 'NearbyVoting' do
   # Pods for NearbyVoting
   pod 'NearbyMessages'
   pod 'EVReflection'
+  pod 'TransitionButton'
+  pod 'DotsLoading'
 
 end

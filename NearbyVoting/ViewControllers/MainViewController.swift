@@ -8,19 +8,52 @@
 
 import UIKit
 import Messages
+import TransitionButton
+import DotsLoading
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var createVoteButton: TransitionButton!
+    var dotsLoadingView: DotsLoadingView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GNSMessageManager.setDebugLoggingEnabled(true)
         
+        self.button()
+        
         self.listen()
+        
+        self.dotsLoadingView = DotsLoadingView(colors: [UIColor(rgb: 0x4CAF50), UIColor(rgb: 0x66BB6A), UIColor(rgb: 0x81C784), UIColor(rgb: 0xA5D6A7)])
+        self.view.addSubview(dotsLoadingView)
+        dotsLoadingView.show()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func button() {
+        createVoteButton.backgroundColor = UIColor(rgb: 0x7CB342)
+        createVoteButton.tintColor = UIColor.white
+        createVoteButton.cornerRadius = createVoteButton.frame.height / 2
+        createVoteButton.spinnerColor = .white
+        createVoteButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+    }
+    
+    @IBAction func buttonAction(_ button: TransitionButton) {
+        button.startAnimation()
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
+        backgroundQueue.async(execute: {
+            sleep(1)
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.dotsLoadingView.stop()
+                button.stopAnimation(animationStyle: .expand, completion: {
+                    self.performSegue(withIdentifier: "ToCreateVoteViewController", sender: nil)
+                })
+            })
+        })
     }
     
     private func listen() {
@@ -43,15 +76,4 @@ class MainViewController: UIViewController {
         
         MessageController.voteSubscription = subscription
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

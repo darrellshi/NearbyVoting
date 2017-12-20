@@ -43,7 +43,7 @@ class CreateVoteViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Title"
+            return "Question"
         case 1:
             return "Options"
         default:

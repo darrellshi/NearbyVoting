@@ -73,6 +73,11 @@ class RespondVoteViewController: UIViewController {
                 })
             })
             MessageController.responsePublication = publication
+            
+            MessageController.responseTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (_) in
+                MessageController.responsePublication = nil
+            })
+            
             self.dismiss(animated: true, completion: nil)
         } else {
             // TODO: pop up

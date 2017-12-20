@@ -18,6 +18,7 @@
 		CD810E381FE800E900237D3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E361FE800E900237D3C /* Main.storyboard */; };
 		CD810E3A1FE800E900237D3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD810E391FE800E900237D3C /* Assets.xcassets */; };
 		CD810E3D1FE800E900237D3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E3B1FE800E900237D3C /* LaunchScreen.storyboard */; };
+		CD821D851FEB1135000440F4 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D841FEB1135000440F4 /* UIColorExtension.swift */; };
 		CDA735B31FE9938D003543C3 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B21FE9938D003543C3 /* MessageController.swift */; };
 		CDA735B51FE9A06F003543C3 /* VotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B41FE9A06F003543C3 /* VotesManager.swift */; };
 		CDA735B91FE9A6FE003543C3 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B81FE9A6FE003543C3 /* WaitingViewController.swift */; };
@@ -26,6 +27,7 @@
 		CDA735EA1FE9CCA4003543C3 /* VoteOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735E91FE9CCA4003543C3 /* VoteOption.swift */; };
 		CDF638AC1FEAB89100DD0184 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638AB1FEAB89100DD0184 /* ResultTableViewCell.swift */; };
 		CDF638AE1FEAB9AF00DD0184 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638AD1FEAB9AF00DD0184 /* ResultsTableViewController.swift */; };
+		CDF638CE1FEAF42800DD0184 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638CD1FEAF42800DD0184 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		CD810E391FE800E900237D3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD810E3C1FE800E900237D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD810E3E1FE800E900237D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD821D841FEB1135000440F4 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CDA735B21FE9938D003543C3 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		CDA735B41FE9A06F003543C3 /* VotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesManager.swift; sourceTree = "<group>"; };
 		CDA735B81FE9A6FE003543C3 /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		CDA735E91FE9CCA4003543C3 /* VoteOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteOption.swift; sourceTree = "<group>"; };
 		CDF638AB1FEAB89100DD0184 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		CDF638AD1FEAB9AF00DD0184 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		CDF638CD1FEAF42800DD0184 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				CD810E3E1FE800E900237D3C /* Info.plist */,
 				CD3385E81FE9577700056D89 /* ddd.m */,
 				CD3385E71FE9577700056D89 /* NearbyVoting-Bridging-Header.h */,
+				CD821D841FEB1135000440F4 /* UIColorExtension.swift */,
 			);
 			path = NearbyVoting;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				CDA735BC1FE9ADA7003543C3 /* Response.swift */,
 				CDA735BE1FE9AE78003543C3 /* UserController.swift */,
 				CDA735E91FE9CCA4003543C3 /* VoteOption.swift */,
+				CDF638CD1FEAF42800DD0184 /* Helper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,11 +242,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DotsLoading/DotsLoading.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DotsLoading.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -292,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD821D851FEB1135000440F4 /* UIColorExtension.swift in Sources */,
 				CDA735B91FE9A6FE003543C3 /* WaitingViewController.swift in Sources */,
 				CD31F0881FE8097A00A4900E /* MainViewController.swift in Sources */,
 				CDA735B31FE9938D003543C3 /* MessageController.swift in Sources */,
@@ -299,6 +310,7 @@
 				CDA735BD1FE9ADA7003543C3 /* Response.swift in Sources */,
 				CDA735BF1FE9AE78003543C3 /* UserController.swift in Sources */,
 				CD31F0931FE848E300A4900E /* RespondVoteViewController.swift in Sources */,
+				CDF638CE1FEAF42800DD0184 /* Helper.swift in Sources */,
 				CD31F08A1FE80B9B00A4900E /* CreateVoteViewController.swift in Sources */,
 				CD31F0911FE8477D00A4900E /* TextFieldTableViewCell.swift in Sources */,
 				CDF638AE1FEAB9AF00DD0184 /* ResultsTableViewController.swift in Sources */,

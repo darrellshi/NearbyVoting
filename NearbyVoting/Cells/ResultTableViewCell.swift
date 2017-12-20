@@ -17,8 +17,7 @@ class ResultTableViewCell: UITableViewCell {
         didSet {
             optionLabel.text = option.text
             voteCountLabel.text = "\(option.responses.count)"
-            // TODO: display all usernames
-            usernamesLabel.text = option.responses.first?.username
+            usernamesLabel.text = Helper.getUsernamesString(responses: option.responses)
         }
     }
     

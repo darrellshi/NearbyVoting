@@ -16,6 +16,8 @@ class MessageController {
     static var responsePublication: GNSPublication?
     static var responseSubscription: GNSSubscription?
     
+    static var responseTimer: Timer?
+    
     static func clearAll() {
         votePublication = nil
         voteSubscription = nil

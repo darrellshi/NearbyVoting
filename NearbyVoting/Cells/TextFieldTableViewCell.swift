@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
+class TextFieldTableViewCell: UITableViewCell, UITextViewDelegate {
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextView!
+    //    @IBOutlet weak var textField: UITextField!
     var vote: Vote?
     
     override func awakeFromNib() {
@@ -23,12 +24,18 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.setSelected(selected, animated: animated)
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
         if let vote = vote {
             let ori = vote.title as NSString
-            vote.title = ori.replacingCharacters(in: range, with: string)
+            vote.title = ori.replacingCharacters(in: range, with: text)
         }
-
+        
         return true
     }
+    
+    
 }
