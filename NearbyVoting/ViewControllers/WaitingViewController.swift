@@ -22,23 +22,35 @@ class WaitingViewController: UIViewController {
     }
     
     @IBAction func onShowResults(_ sender: Any) {
-        self.performSegue(withIdentifier: "ToWaitingViewController", sender: nil)
+        self.performSegue(withIdentifier: "ToResultsViewController", sender: nil)
+    }
+    
+    private func addResponseToVote(response: Response, vote: Vote) {
+        if response.optionIndex >= vote.numOfOptions {
+            return
+        }
+        vote.options[response.optionIndex].addResponse(response: response)
     }
     
     private func listen() {
-        MessageController.responseSubscriptions.append(MessageController.messageManager.subscription(messageFoundHandler: { (message) in
+        let subscription = MessageController.messageManager.subscription(messageFoundHandler: { (message) in
             if let content = message?.content {
                 let response = Response(data: content)
-                if let vote = VotesManager.published.first {
-                    vote.optionObjs[response.index!].responses.append(response)
+                if let vote = VotesManager.publishedVote {
+                    self.addResponseToVote(response: response, vote: vote)
                 }
             }
-        }) { (message) in
-            if let content = message?.content {
-                let string = String(data: content, encoding: .utf8)
-                print(string ?? "lost")
-            }
-        })
+        }, messageLostHandler: { (message) in
+            print("message loss")
+        }) { (params) in
+            guard let params = params else { return }
+            params.strategy = GNSStrategy(paramsBlock: { (params) in
+                guard let params = params else { return }
+                params.discoveryMediums = .default
+                params.discoveryMode = .scan
+            })
+        }
+        MessageController.responseSubscription = subscription
     }
     
     /*

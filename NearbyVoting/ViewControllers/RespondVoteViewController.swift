@@ -18,10 +18,12 @@ class RespondVoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MessageController.voteSubscription = nil
+        
         respondOptionsTableView.delegate = self
         respondOptionsTableView.dataSource = self
         
-        vote = VotesManager.received.first
+        vote = VotesManager.receivedVote
     }
     
     private func askForUsername() {
@@ -35,6 +37,7 @@ class RespondVoteViewController: UIViewController {
             if let text = popup.textFields!.first!.text {
                 if (text != "") {
                     UserController.username = text
+                    self.send()
                 }
             }
         }))
@@ -51,17 +54,26 @@ class RespondVoteViewController: UIViewController {
             self.askForUsername()
             return
         }
+        self.send()
+    }
+    
+    private func send() {
         if let selectedIndex = selectedIndex {
-            let response = Response()
-            response.index = selectedIndex
+            let response = Response(optionIndex: selectedIndex)
             response.username = UserController.username
             
-            let responseData = response.toJsonData()
-            let gnsMessage = GNSMessage(content: responseData)
-            MessageController.votePublications.append(MessageController.messageManager.publication(with: gnsMessage))
-            //                self.performSegue(withIdentifier: "ToWaitingViewController", sender: nil)
+            let jsonData = response.toJsonData()
+            let gnsMessage = GNSMessage(content: jsonData)
+            let publication = MessageController.messageManager.publication(with: gnsMessage, paramsBlock: { (params) in
+                guard let params = params else { return }
+                params.strategy = GNSStrategy(paramsBlock: { (params) in
+                    guard let params = params else { return }
+                    params.discoveryMediums = .default
+                    params.discoveryMode = .broadcast
+                })
+            })
+            MessageController.responsePublication = publication
             self.dismiss(animated: true, completion: nil)
-            
         } else {
             // TODO: pop up
         }
@@ -86,7 +98,7 @@ extension RespondVoteViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RespondOptionTableCell", for: indexPath)
-        cell.textLabel?.text = vote?.options[indexPath.row]
+        cell.textLabel?.text = vote?.options[indexPath.row].text
         return cell
     }
     

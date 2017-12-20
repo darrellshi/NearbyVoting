@@ -16,6 +16,8 @@ class CreateVoteViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MessageController.voteSubscription = nil
+        
         vote = Vote()
     }
 
@@ -58,7 +60,7 @@ class CreateVoteViewController: UITableViewController {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "VoteOptionCell", for: indexPath)
-            cell.textLabel?.text = vote?.options[indexPath.row]
+            cell.textLabel?.text = vote?.options[indexPath.row].text
             return cell
         default:
             print("error")
@@ -86,7 +88,7 @@ class CreateVoteViewController: UITableViewController {
         }
         popup.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             let text = popup.textFields!.first!.text!
-            self.vote?.options.append(text)
+            self.vote?.appendOption(optionString: text)
             let indexPath = IndexPath(row: self.vote!.options.count-1, section: 1)
             self.tableView.insertRows(at: [indexPath], with: .bottom)
         }))
@@ -94,9 +96,18 @@ class CreateVoteViewController: UITableViewController {
     }
     
     @IBAction func onStart(_ sender: Any) {
-        if let voteData = vote?.toJsonData() {
-            let gnsMessage = GNSMessage(content: voteData)
-            MessageController.votePublications.append(MessageController.messageManager.publication(with: gnsMessage))
+        if let vote = self.vote {
+            let jsonData = vote.toJsonData()
+            let publication = MessageController.messageManager.publication(with: GNSMessage(content: jsonData), paramsBlock: { (params) in
+                guard let params = params else { return }
+                params.strategy = GNSStrategy(paramsBlock: { (params) in
+                    guard let params = params else { return }
+                    params.discoveryMediums = .default
+                    params.discoveryMode = .broadcast
+                })
+            })
+            MessageController.votePublication = publication
+            VotesManager.publishedVote = vote
             self.performSegue(withIdentifier: "ToWaitingViewController", sender: nil)
         }
     }

@@ -9,6 +9,11 @@
 import UIKit
 
 class VotesManager {
-    static var published = [Vote]()
-    static var received = [Vote]()
+    static var publishedVote: Vote?
+    static var receivedVote: Vote?
+    
+    static func clearAll() {
+        publishedVote = nil
+        receivedVote = nil
+    }
 }

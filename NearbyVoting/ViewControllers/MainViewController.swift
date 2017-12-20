@@ -10,6 +10,7 @@ import UIKit
 import Messages
 
 class MainViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,21 +24,26 @@ class MainViewController: UIViewController {
     }
     
     private func listen() {
-        MessageController.voteSubscriptions.append(MessageController.messageManager.subscription(messageFoundHandler: { (message) in
+        let subscription = MessageController.messageManager.subscription(messageFoundHandler: { (message) in
             if let content = message?.content {
                 let vote = Vote(data: content)
-                print(vote)
-                VotesManager.received.append(vote)
+                VotesManager.receivedVote = vote
                 self.performSegue(withIdentifier: "ToRespondVoteViewController", sender: nil)
             }
-        }) { (message) in
-            if let content = message?.content {
-                let string = String(data: content, encoding: .utf8)
-                print(string ?? "lost")
-            }
-        })
+        }, messageLostHandler: { (message) in
+            print("message loss")
+        }) { (params) in
+            guard let params = params else { return }
+            params.strategy = GNSStrategy(paramsBlock: { (params) in
+                guard let params = params else { return }
+                params.discoveryMediums = .default
+                params.discoveryMode = .scan
+            })
+        }
+        
+        MessageController.voteSubscription = subscription
     }
-
+    
     /*
      // MARK: - Navigation
      

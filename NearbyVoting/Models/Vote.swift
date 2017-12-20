@@ -6,25 +6,29 @@
 //  Copyright © 2017 Darrell Shi. All rights reserved.
 //
 
-import Foundation
 import EVReflection
 
 class Vote: EVObject {
     var title = ""
-    var options = [String]()
-    var optionObjs = [VoteOptionObj]()
+    var options:[VoteOption]!
+    var numOfOptions: Int
     
-    required convenience init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init() {
+        options = [VoteOption]()
+        numOfOptions = 0
     }
-
-    required init() {}
     
-    init(title: String, options: [String]) {
+    convenience init(title: String, options: [String]) {
+        self.init()
         self.title = title
-        self.options.append(contentsOf: options)
         for option in options {
-            self.optionObjs.append(VoteOptionObj(text: option))
+            self.options.append(VoteOption(index: numOfOptions, text: option))
+            self.numOfOptions += 1
         }
+    }
+    
+    func appendOption(optionString: String) {
+        self.options.append(VoteOption(index: numOfOptions, text: optionString))
+        self.numOfOptions += 1
     }
 }
