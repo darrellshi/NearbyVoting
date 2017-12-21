@@ -18,7 +18,6 @@
 		CD810E3A1FE800E900237D3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD810E391FE800E900237D3C /* Assets.xcassets */; };
 		CD810E3D1FE800E900237D3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E3B1FE800E900237D3C /* LaunchScreen.storyboard */; };
 		CD821D851FEB1135000440F4 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D841FEB1135000440F4 /* UIColorExtension.swift */; };
-		CD821D871FEC0DE8000440F4 /* ResultTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D861FEC0DE8000440F4 /* ResultTitleTableViewCell.swift */; };
 		CD821D891FEC227D000440F4 /* ViewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D881FEC227D000440F4 /* ViewsManager.swift */; };
 		CDA735B31FE9938D003543C3 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B21FE9938D003543C3 /* MessageController.swift */; };
 		CDA735B51FE9A06F003543C3 /* VotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B41FE9A06F003543C3 /* VotesManager.swift */; };
@@ -27,7 +26,7 @@
 		CDA735BF1FE9AE78003543C3 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735BE1FE9AE78003543C3 /* UserController.swift */; };
 		CDA735EA1FE9CCA4003543C3 /* VoteOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735E91FE9CCA4003543C3 /* VoteOption.swift */; };
 		CDF638AC1FEAB89100DD0184 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638AB1FEAB89100DD0184 /* ResultTableViewCell.swift */; };
-		CDF638AE1FEAB9AF00DD0184 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638AD1FEAB9AF00DD0184 /* ResultsTableViewController.swift */; };
+		CDF638AE1FEAB9AF00DD0184 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638AD1FEAB9AF00DD0184 /* ResultsViewController.swift */; };
 		CDF638CE1FEAF42800DD0184 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF638CD1FEAF42800DD0184 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,6 @@
 		CD810E3C1FE800E900237D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD810E3E1FE800E900237D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD821D841FEB1135000440F4 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		CD821D861FEC0DE8000440F4 /* ResultTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTitleTableViewCell.swift; sourceTree = "<group>"; };
 		CD821D881FEC227D000440F4 /* ViewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsManager.swift; sourceTree = "<group>"; };
 		CDA735B21FE9938D003543C3 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		CDA735B41FE9A06F003543C3 /* VotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesManager.swift; sourceTree = "<group>"; };
@@ -59,7 +57,7 @@
 		CDA735BE1FE9AE78003543C3 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		CDA735E91FE9CCA4003543C3 /* VoteOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteOption.swift; sourceTree = "<group>"; };
 		CDF638AB1FEAB89100DD0184 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
-		CDF638AD1FEAB9AF00DD0184 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		CDF638AD1FEAB9AF00DD0184 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		CDF638CD1FEAF42800DD0184 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +97,6 @@
 			children = (
 				CD31F0901FE8477D00A4900E /* TextFieldTableViewCell.swift */,
 				CDF638AB1FEAB89100DD0184 /* ResultTableViewCell.swift */,
-				CD821D861FEC0DE8000440F4 /* ResultTitleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -146,7 +143,7 @@
 				CD31F0891FE80B9B00A4900E /* CreateVoteViewController.swift */,
 				CD31F0921FE848E300A4900E /* RespondVoteViewController.swift */,
 				CDA735B81FE9A6FE003543C3 /* WaitingViewController.swift */,
-				CDF638AD1FEAB9AF00DD0184 /* ResultsTableViewController.swift */,
+				CDF638AD1FEAB9AF00DD0184 /* ResultsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -318,8 +315,7 @@
 				CDF638CE1FEAF42800DD0184 /* Helper.swift in Sources */,
 				CD31F08A1FE80B9B00A4900E /* CreateVoteViewController.swift in Sources */,
 				CD31F0911FE8477D00A4900E /* TextFieldTableViewCell.swift in Sources */,
-				CD821D871FEC0DE8000440F4 /* ResultTitleTableViewCell.swift in Sources */,
-				CDF638AE1FEAB9AF00DD0184 /* ResultsTableViewController.swift in Sources */,
+				CDF638AE1FEAB9AF00DD0184 /* ResultsViewController.swift in Sources */,
 				CD810E331FE800E900237D3C /* AppDelegate.swift in Sources */,
 				CD31F08C1FE80EE600A4900E /* Vote.swift in Sources */,
 				CDF638AC1FEAB89100DD0184 /* ResultTableViewCell.swift in Sources */,

@@ -23,8 +23,8 @@ class MainViewController: UIViewController {
         
         if ViewsManager.dotsLoadingView == nil {
             ViewsManager.dotsLoadingView = DotsLoadingView(colors: [UIColor(rgb: 0x4CAF50), UIColor(rgb: 0x66BB6A), UIColor(rgb: 0x81C784), UIColor(rgb: 0xA5D6A7)])
-            self.view.addSubview(ViewsManager.dotsLoadingView)
         }
+        self.view.addSubview(ViewsManager.dotsLoadingView)
         ViewsManager.dotsLoadingView.show()
         
         self.listenForVote()
@@ -134,7 +134,7 @@ class MainViewController: UIViewController {
         
         if segue.identifier == "ToResultViewController" {
             let nav = segue.destination as! UINavigationController
-            let view = nav.viewControllers.first! as! ResultsTableViewController
+            let view = nav.viewControllers.first! as! ResultsViewController
             view.isMyPublication = false
         }
     }
