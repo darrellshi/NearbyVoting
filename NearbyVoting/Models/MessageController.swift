@@ -15,6 +15,8 @@ class MessageController {
     static var voteSubscription: GNSSubscription?
     static var responsePublication: GNSPublication?
     static var responseSubscription: GNSSubscription?
+    static var resultPublication: GNSPublication?
+    static var resultSubscription: GNSSubscription?
     
     static var responseTimer: Timer?
     
@@ -23,5 +25,7 @@ class MessageController {
         voteSubscription = nil
         responsePublication = nil
         responseSubscription = nil
+        resultPublication = nil
+        resultSubscription = nil
     }
 }

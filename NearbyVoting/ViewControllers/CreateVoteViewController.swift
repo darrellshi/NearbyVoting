@@ -16,8 +16,8 @@ class CreateVoteViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MessageController.voteSubscription = nil
-        
+        UIApplication.shared.statusBarStyle = .lightContent
+                                
         vote = Vote()
     }
 
@@ -81,16 +81,33 @@ class CreateVoteViewController: UITableViewController {
 
     @IBAction func onAddOption(_ sender: Any) {
         let popup = UIAlertController(title: "Add Option", message: "Enter here:", preferredStyle: .alert)
+        popup.view.tintColor = UIColor(rgb: 0x7CB342)
+            
         popup.addTextField { (textField) in
             textField.autocorrectionType = .default
             textField.keyboardType = .default
             textField.spellCheckingType = .default
+            textField.autocapitalizationType = .sentences
         }
-        popup.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            let text = popup.textFields!.first!.text!
-            self.vote?.appendOption(optionString: text)
-            let indexPath = IndexPath(row: self.vote!.options.count-1, section: 1)
-            self.tableView.insertRows(at: [indexPath], with: .bottom)
+        popup.addAction(UIAlertAction(title: "Add More", style: .default, handler: { (action) in
+            if let text = popup.textFields!.first!.text {
+                if text.isEmpty || text.count == 0 {
+                    self.onAddOption(sender)
+                    return
+                }
+                self.vote?.appendOption(optionString: text)
+                let indexPath = IndexPath(row: self.vote!.options.count-1, section: 1)
+                self.tableView.insertRows(at: [indexPath], with: .bottom)
+                self.onAddOption(sender)
+            }
+        }))
+        popup.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
+            if let text = popup.textFields!.first!.text {
+                if text.isEmpty || text.count == 0 { return }
+                self.vote?.appendOption(optionString: text)
+                let indexPath = IndexPath(row: self.vote!.options.count-1, section: 1)
+                self.tableView.insertRows(at: [indexPath], with: .bottom)
+            }
         }))
         self.present(popup, animated: true)
     }
@@ -98,7 +115,8 @@ class CreateVoteViewController: UITableViewController {
     @IBAction func onStart(_ sender: Any) {
         if let vote = self.vote {
             let jsonData = vote.toJsonData()
-            let publication = MessageController.messageManager.publication(with: GNSMessage(content: jsonData), paramsBlock: { (params) in
+            let gnsMessage = GNSMessage(content: jsonData, type: "VOTE")
+            let publication = MessageController.messageManager.publication(with: gnsMessage!, paramsBlock: { (params) in
                 guard let params = params else { return }
                 params.strategy = GNSStrategy(paramsBlock: { (params) in
                     guard let params = params else { return }

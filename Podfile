@@ -6,5 +6,6 @@ target 'NearbyVoting' do
   pod 'EVReflection'
   pod 'TransitionButton'
   pod 'DotsLoading'
+  pod 'DYDotsView'
 
 end

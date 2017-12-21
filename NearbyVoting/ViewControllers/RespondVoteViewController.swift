@@ -18,28 +18,40 @@ class RespondVoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         MessageController.voteSubscription = nil
         
         respondOptionsTableView.delegate = self
         respondOptionsTableView.dataSource = self
         
         vote = VotesManager.receivedVote
+        
+        self.titleLabel.text = vote?.title
     }
     
     private func askForUsername() {
         let popup = UIAlertController(title: "Username", message: "Enter the name you would like everyone to see", preferredStyle: .alert)
+        popup.view.tintColor = UIColor(rgb: 0x7CB342)
+
         popup.addTextField { (textField) in
             textField.autocorrectionType = .default
             textField.keyboardType = .default
             textField.spellCheckingType = .default
         }
+        popup.addAction(UIAlertAction(title: "Anonymous", style: .default, handler: { (action) in
+            UserController.username = "Anonymous"
+            self.send()
+        }))
         popup.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             if let text = popup.textFields!.first!.text {
                 if (text != "") {
                     UserController.username = text
                     self.send()
+                    return
                 }
             }
+            self.askForUsername()
         }))
         self.present(popup, animated: true)
     }
@@ -63,7 +75,7 @@ class RespondVoteViewController: UIViewController {
             response.username = UserController.username
             
             let jsonData = response.toJsonData()
-            let gnsMessage = GNSMessage(content: jsonData)
+            let gnsMessage = GNSMessage(content: jsonData, type: "RESPONSE")
             let publication = MessageController.messageManager.publication(with: gnsMessage, paramsBlock: { (params) in
                 guard let params = params else { return }
                 params.strategy = GNSStrategy(paramsBlock: { (params) in

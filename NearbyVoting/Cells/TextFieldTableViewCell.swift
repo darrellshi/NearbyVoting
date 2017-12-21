@@ -17,6 +17,9 @@ class TextFieldTableViewCell: UITableViewCell, UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        textField.textColor = UIColor.lightGray
+        textField.text = "Enter your question here..."
+        
         textField.delegate = self
     }
 
@@ -37,5 +40,17 @@ class TextFieldTableViewCell: UITableViewCell, UITextViewDelegate {
         return true
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Enter your question here..."
+            textView.textColor = UIColor.lightGray
+        }
+    }
 }

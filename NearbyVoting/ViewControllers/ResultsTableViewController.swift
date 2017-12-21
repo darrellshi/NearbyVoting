@@ -9,18 +9,21 @@
 import UIKit
 
 class ResultsTableViewController: UITableViewController {
+    var isMyPublication = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         MessageController.votePublication = nil
         MessageController.responseSubscription = nil
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if (!isMyPublication) {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+//        tempFillData()
+        
     }
     
 //    private func tempCreateResponse(index: Int, username: String) {
@@ -30,11 +33,11 @@ class ResultsTableViewController: UITableViewController {
 //    }
 //
 //    private func tempFillData() {
-//        VotesManager.publishedVote = Vote(title: "What would you like to have for lunch today?", options: ["Chipole", "Noodle & I", "Fazoli's", "Stacked Pickle"])
-//        tempCreateResponse(index: 0, username: "darrell")
+//        VotesManager.publishedVote = Vote(title: "What would you like to have for lunch for the secret birthday party for Nicholas Chan?", options: ["Chipole", "Noodle & I", "Fazoli's", "Stacked Pickle"])
+//        tempCreateResponse(index: 2, username: "darrell")
 //        tempCreateResponse(index: 1, username: "april")
 //        tempCreateResponse(index: 1, username: "chris")
-//        tempCreateResponse(index: 1, username: "ni")
+//        tempCreateResponse(index: 2, username: "ni")
 //        tempCreateResponse(index: 2, username: "david")
 //        tempCreateResponse(index: 2, username: "boya")
 //    }
@@ -43,7 +46,29 @@ class ResultsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onShare(_ sender: Any) {
+        guard let vote = VotesManager.publishedVote else { return }
 
+        let jsonData = vote.toJsonData()
+        let gnsMessage = GNSMessage(content: jsonData, type: "RESULT")
+        let publication = MessageController.messageManager.publication(with: gnsMessage!, paramsBlock: { (params) in
+            guard let params = params else { return }
+            params.strategy = GNSStrategy(paramsBlock: { (params) in
+                guard let params = params else { return }
+                params.discoveryMediums = .default
+                params.discoveryMode = .broadcast
+            })
+        })
+        MessageController.resultPublication = publication
+    }
+
+    @IBAction func onClose(_ sender: Any) {
+//        MessageController.resultPublication = nil
+        MessageController.clearAll()
+        self.performSegue(withIdentifier: "ToMainViewController", sender: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,8 +93,8 @@ class ResultsTableViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath)
-            cell.textLabel?.text = vote.title
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath) as! ResultTitleTableViewCell
+            cell.titleText = vote.title
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell", for: indexPath) as! ResultTableViewCell
@@ -77,6 +102,17 @@ class ResultsTableViewController: UITableViewController {
             return cell
         default:
             return UITableViewCell()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 90
+        case 1:
+            return 55
+        default:
+            return 0
         }
     }
 }

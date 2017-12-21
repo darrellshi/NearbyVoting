@@ -13,12 +13,13 @@
 		CD31F08C1FE80EE600A4900E /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31F08B1FE80EE600A4900E /* Vote.swift */; };
 		CD31F0911FE8477D00A4900E /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31F0901FE8477D00A4900E /* TextFieldTableViewCell.swift */; };
 		CD31F0931FE848E300A4900E /* RespondVoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31F0921FE848E300A4900E /* RespondVoteViewController.swift */; };
-		CD3385E91FE9577700056D89 /* ddd.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3385E81FE9577700056D89 /* ddd.m */; };
 		CD810E331FE800E900237D3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD810E321FE800E900237D3C /* AppDelegate.swift */; };
 		CD810E381FE800E900237D3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E361FE800E900237D3C /* Main.storyboard */; };
 		CD810E3A1FE800E900237D3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD810E391FE800E900237D3C /* Assets.xcassets */; };
 		CD810E3D1FE800E900237D3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD810E3B1FE800E900237D3C /* LaunchScreen.storyboard */; };
 		CD821D851FEB1135000440F4 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D841FEB1135000440F4 /* UIColorExtension.swift */; };
+		CD821D871FEC0DE8000440F4 /* ResultTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D861FEC0DE8000440F4 /* ResultTitleTableViewCell.swift */; };
+		CD821D891FEC227D000440F4 /* ViewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD821D881FEC227D000440F4 /* ViewsManager.swift */; };
 		CDA735B31FE9938D003543C3 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B21FE9938D003543C3 /* MessageController.swift */; };
 		CDA735B51FE9A06F003543C3 /* VotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B41FE9A06F003543C3 /* VotesManager.swift */; };
 		CDA735B91FE9A6FE003543C3 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA735B81FE9A6FE003543C3 /* WaitingViewController.swift */; };
@@ -40,7 +41,6 @@
 		CD31F0901FE8477D00A4900E /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CD31F0921FE848E300A4900E /* RespondVoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondVoteViewController.swift; sourceTree = "<group>"; };
 		CD3385E71FE9577700056D89 /* NearbyVoting-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NearbyVoting-Bridging-Header.h"; sourceTree = "<group>"; };
-		CD3385E81FE9577700056D89 /* ddd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ddd.m; sourceTree = "<group>"; };
 		CD3385EA1FE9586500056D89 /* NearbyMessages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NearbyMessages; path = Pods/NearbyMessages; sourceTree = "<group>"; };
 		CD3385EC1FE958DD00056D89 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
 		CD810E2F1FE800E900237D3C /* NearbyVoting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearbyVoting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +50,8 @@
 		CD810E3C1FE800E900237D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD810E3E1FE800E900237D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD821D841FEB1135000440F4 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		CD821D861FEC0DE8000440F4 /* ResultTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTitleTableViewCell.swift; sourceTree = "<group>"; };
+		CD821D881FEC227D000440F4 /* ViewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsManager.swift; sourceTree = "<group>"; };
 		CDA735B21FE9938D003543C3 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		CDA735B41FE9A06F003543C3 /* VotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesManager.swift; sourceTree = "<group>"; };
 		CDA735B81FE9A6FE003543C3 /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				CD31F0901FE8477D00A4900E /* TextFieldTableViewCell.swift */,
 				CDF638AB1FEAB89100DD0184 /* ResultTableViewCell.swift */,
+				CD821D861FEC0DE8000440F4 /* ResultTitleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -130,7 +133,6 @@
 				CD810E391FE800E900237D3C /* Assets.xcassets */,
 				CD810E3B1FE800E900237D3C /* LaunchScreen.storyboard */,
 				CD810E3E1FE800E900237D3C /* Info.plist */,
-				CD3385E81FE9577700056D89 /* ddd.m */,
 				CD3385E71FE9577700056D89 /* NearbyVoting-Bridging-Header.h */,
 				CD821D841FEB1135000440F4 /* UIColorExtension.swift */,
 			);
@@ -159,6 +161,7 @@
 				CDA735BE1FE9AE78003543C3 /* UserController.swift */,
 				CDA735E91FE9CCA4003543C3 /* VoteOption.swift */,
 				CDF638CD1FEAF42800DD0184 /* Helper.swift */,
+				CD821D881FEC227D000440F4 /* ViewsManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,12 +245,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NearbyVoting/Pods-NearbyVoting-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DYDotsView/DYDotsView.framework",
 				"${BUILT_PRODUCTS_DIR}/DotsLoading/DotsLoading.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DYDotsView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DotsLoading.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
@@ -313,11 +318,12 @@
 				CDF638CE1FEAF42800DD0184 /* Helper.swift in Sources */,
 				CD31F08A1FE80B9B00A4900E /* CreateVoteViewController.swift in Sources */,
 				CD31F0911FE8477D00A4900E /* TextFieldTableViewCell.swift in Sources */,
+				CD821D871FEC0DE8000440F4 /* ResultTitleTableViewCell.swift in Sources */,
 				CDF638AE1FEAB9AF00DD0184 /* ResultsTableViewController.swift in Sources */,
-				CD3385E91FE9577700056D89 /* ddd.m in Sources */,
 				CD810E331FE800E900237D3C /* AppDelegate.swift in Sources */,
 				CD31F08C1FE80EE600A4900E /* Vote.swift in Sources */,
 				CDF638AC1FEAB89100DD0184 /* ResultTableViewCell.swift in Sources */,
+				CD821D891FEC227D000440F4 /* ViewsManager.swift in Sources */,
 				CDA735B51FE9A06F003543C3 /* VotesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

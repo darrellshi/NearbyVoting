@@ -8,21 +8,33 @@
 
 import UIKit
 import TransitionButton
+import DYDotsView
 import DotsLoading
 
 class WaitingViewController: UIViewController {
     @IBOutlet weak var showResultsButton: TransitionButton!
     @IBOutlet weak var responseCounterLabel: UILabel!
     var numOfResponses = 0
-
-    var dotsLoadingView: DotsLoadingView!
+    
+    var loaderView: DYDotsView!
+    
+    var timer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.dotsLoadingView = DotsLoadingView(colors: [UIColor(rgb: 0x4CAF50), UIColor(rgb: 0x66BB6A), UIColor(rgb: 0x81C784), UIColor(rgb: 0xA5D6A7)])
-        self.view.addSubview(dotsLoadingView)
-        dotsLoadingView.show()
+        UIApplication.shared.statusBarStyle = .default
+        
+        self.loaderView = DYDotsView(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
+        self.loaderView.numberOfDots = 5
+        self.loaderView.duration = 0.5
+        self.loaderView.backgroundColor = .clear
+        self.loaderView.dotsColor = UIColor(rgb: 0xe53935)
+        self.loaderView.center = self.view.center
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+            self.loaderView.startAnimating()
+            self.view.addSubview(self.loaderView)
+        }
         
         button()
         
@@ -30,11 +42,10 @@ class WaitingViewController: UIViewController {
         responseCounterLabel.layer.cornerRadius = 20
         
         listen()
-    
     }
     
     private func button() {
-        showResultsButton.backgroundColor = UIColor(rgb: 0x7CB342)
+        showResultsButton.backgroundColor = UIColor(rgb: 0xe53935)
         showResultsButton.tintColor = UIColor.white
         showResultsButton.cornerRadius = showResultsButton.frame.height / 2
         showResultsButton.spinnerColor = .white
@@ -48,7 +59,7 @@ class WaitingViewController: UIViewController {
         backgroundQueue.async(execute: {
             sleep(1)
             DispatchQueue.main.async(execute: { () -> Void in
-                self.dotsLoadingView.stop()
+                ViewsManager.dotsLoadingView.stop()
                 UIView.animate(withDuration: 0.5, animations: {
                     self.responseCounterLabel.alpha = 0
                 })
@@ -65,7 +76,7 @@ class WaitingViewController: UIViewController {
     }
     
     private func addResponseToVote(response: Response, vote: Vote) {
-        if response.optionIndex >= vote.numOfOptions {
+        if response.optionIndex >= vote.numOfOptions || response.optionIndex < 0 {
             return
         }
         vote.options[response.optionIndex].addResponse(response: response)
@@ -78,7 +89,9 @@ class WaitingViewController: UIViewController {
     
     private func listen() {
         let subscription = MessageController.messageManager.subscription(messageFoundHandler: { (message) in
-            if let content = message?.content {
+            guard let message = message else { return }
+            if message.type != "RESPONSE" { return }
+            if let content = message.content {
                 let response = Response(data: content)
                 if let vote = VotesManager.publishedVote {
                     self.addResponseToVote(response: response, vote: vote)
