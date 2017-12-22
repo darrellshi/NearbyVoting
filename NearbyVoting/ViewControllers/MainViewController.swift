@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(ViewsManager.dotsLoadingView)
         ViewsManager.dotsLoadingView.show()
         
-        self.listenForVote()
+        self.listen()
     }
     
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
         })
     }
     
-    private func listenForVote() {
+    private func listen() {
         let subscription = MessageController.messageManager.subscription(messageFoundHandler: { (message) in
             guard let message = message else { return }
             

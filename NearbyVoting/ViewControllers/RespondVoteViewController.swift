@@ -38,6 +38,7 @@ class RespondVoteViewController: UIViewController {
             textField.autocorrectionType = .default
             textField.keyboardType = .default
             textField.spellCheckingType = .default
+            textField.autocapitalizationType = .sentences
         }
         popup.addAction(UIAlertAction(title: "Anonymous", style: .default, handler: { (action) in
             UserController.username = "Anonymous"

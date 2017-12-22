@@ -75,6 +75,7 @@ class CreateVoteViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             vote?.options.remove(at: indexPath.row)
+            vote?.numOfOptions -= 1
             tableView.deleteRows(at: [indexPath], with: .bottom)
         }
     }
